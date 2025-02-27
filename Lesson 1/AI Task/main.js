@@ -84,7 +84,7 @@ console.log(fullName);
 let numberAsString = '123';
 
 function Number(value) {
-    return convertedNumber = +value;
+    return +value;
 }
 
 console.log(Number(numberAsString) + 10);
