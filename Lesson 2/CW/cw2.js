@@ -75,3 +75,18 @@ console.log(users[2]['name']);
 let userAnton = users[3];
 console.log(userAnton.skills);
 console.log(users.length);
+
+//JS preview |  Модифікація об'єктів
+
+users[0].wife = {
+    name: 'Olga',
+    age: 25,
+    id: 5,
+    status: true,
+    skills: ['cooking', 'design']
+}
+console.log(users[0]);
+console.log(users[0].wife['skills'][0]);
+delete users[0].wife.skills[1];
+let userVasil = users[0];
+console.log(userVasil.wife);
