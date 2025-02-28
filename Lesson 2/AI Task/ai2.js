@@ -146,7 +146,31 @@ if (result<18) {
 // і так далі до 7 — "Неділя".
 // Якщо введено число поза діапазоном, виведіть "Невірний день".
 
-
+switch (+prompt('Введіть номер дня тижня')) {
+    case 1:
+        console.log('Monday');
+        break;
+    case 2:
+        console.log('Tuesday');
+        break;
+    case 3:
+        console.log('Wednesday');
+        break
+    case 4:
+        console.log('Thursday');
+        break
+    case 5:
+        console.log('Friday');
+        break
+    case 6:
+        console.log('Saturday');
+        break
+    case 7:
+        console.log('Sunday');
+        break
+    default:
+        console.log('Не вірно введено число');
+}
 
 // 9. Тернарний оператор
 // Напишіть програму, яка запитує у користувача число через prompt і:
