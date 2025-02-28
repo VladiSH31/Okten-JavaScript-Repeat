@@ -90,3 +90,91 @@ console.log(users[0].wife['skills'][0]);
 delete users[0].wife.skills[1];
 let userVasil = users[0];
 console.log(userVasil.wife);
+
+// JS preview | Різниця між примітивами та референціальними типами
+
+let a = 100;
+let b = a;
+b = b + 10;
+console.log(a);
+console.log(b);
+
+let user = {name: 'John'}
+console.log(user);
+let user2 = user;
+user2.age = 32;
+console.log(user2);
+console.log(user);
+
+// JS preview | Логічні розгалуження if
+
+let color = prompt('Enter color')
+if (color === 'red')  {
+    console.log('Stop');
+} else {
+    console.log('Go');
+}
+
+let age = +prompt('Enter your age');
+if ( age >= 18) {
+    console.log('Adult');
+} else {
+    console.log('Cartoon');
+}
+
+let trafficLights = prompt('Enter color traffic lights');
+if (trafficLights === 'Red') {
+    console.log('Stop');
+} else if (trafficLights === 'Yellow') {
+    console.log('Wait');
+} else  if (trafficLights === 'Green') {
+    console.log('You can go');
+}
+
+
+let color1 = prompt('Enter color');
+if (color1 === 'green') {
+    if (confirm('Is road clear?')) {
+      console.log('Go');
+    } else {
+      console.log('Wait');
+    }
+}
+if (color1 === 'Yellow') {
+    console.log('Wait');
+}
+if (color1 === 'Red') {
+    console.log('Stop');
+    if (confirm('You wait?')) {
+        console.log('Ok');
+    }else {
+        console.log('You are dead');
+    }
+}
+
+// JS preview | Логічні розгалуження switch
+
+let colors = prompt('Enter color please')
+switch (colors) {
+    case 'Red':
+        console.log('Stop');
+        break;
+    case 'Green':
+        console.log('Go');
+        break
+    case 'Yellow':
+        console.log('Wait');
+        break;
+}
+
+// JS Preview | Ternary
+
+let human = {
+    name: 'Jacob',
+    age: 30,
+    status: true
+}
+
+let access = human.age >= 18 ? 'Yes':'No';
+
+console.log(access);
