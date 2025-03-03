@@ -178,6 +178,12 @@ switch (+prompt('Введіть номер дня тижня')) {
 // Якщо число парне, виводить "Число парне".
 // Якщо непарне, виводить "Число непарне".
 // Використайте тернарний оператор.
+
+let number1 = +prompt('Введіть число');
+let numberResult = number1 % 2 ? "Число непарне":"Число парне";
+console.log(numberResult);
+
+
 // 10. Комбіноване завдання
 // Створіть об'єкт, який представляє магазин:
 //
@@ -185,3 +191,22 @@ switch (+prompt('Введіть номер дня тижня')) {
 // Додайте метод addProduct, який додає новий товар до масиву products.
 // Додайте метод toggleOpen, який змінює значення isOpen на протилежне.
 // Використайте ці методи, щоб додати товар і змінити стан магазину (відкрито/закрито).
+
+let market = {
+    name: 'Silpo',
+    products: ['bread', 'milk', 'beer', 'meat'],
+    isOpen: true
+}
+
+market.products.push('orange');
+
+function toggleOpen(status) {
+    if (status===true) {
+        market.isOpen = false;
+    } else if (status===false){
+        market.isOpen = true;
+    }
+}
+
+toggleOpen(true);
+console.log(market);
