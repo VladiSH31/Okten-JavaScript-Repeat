@@ -19,6 +19,9 @@ console.log(x);
 x*=2;
 console.log(x);
 
+x/=2;
+console.log(x);
+
 // JS preview |  Цикл for of
 // JS preview |  Цикл for
 // JS preview | Цикл for in
