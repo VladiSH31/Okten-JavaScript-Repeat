@@ -47,7 +47,7 @@ for (let number of numsArray2) {
     }
 }
 
-for (let i = numsArray.length-1; i >= 0; i--) {
+for (let i = numsArray.length - 1; i >= 0; i--) {
     let number = numsArray[i];
     console.log(number);
 }
@@ -57,10 +57,36 @@ for (let i = numsArray.length-1; i >= 0; i--) {
 // Створіть об'єкт, який описує книгу (поля: title, author, year).
 // За допомогою циклу for in виведіть усі ключі та значення цього об'єкта у форматі: ключ: значення.
 
+let book = {
+    title: 'Lords of the Ring',
+    author: 'J. Tolkien',
+    year: 1990
+}
+
+for (let bookKey in book) {
+    console.log(bookKey, ': ', book[bookKey])
+}
 
 // 5. Цикл while
 // Виведіть усі числа від 1 до 10 за допомогою циклу while.
 // Виведіть усі непарні числа від 1 до 20 за допомогою циклу while.
+
+let i = 0;
+while (i < numsArray.length) {
+    let nums = numsArray[i];
+    console.log(nums);
+    i++;
+}
+
+let numsArray3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+let ii = 0;
+while (i < numsArray3.length) {
+    let nums3 = numsArray3[i];
+    if (nums3 % 2 === 0) {
+        console.log(nums3);
+    }
+}
 
 
 // 6. Комбіноване завдання: Інкремент і цикл for
@@ -68,6 +94,11 @@ for (let i = numsArray.length-1; i >= 0; i--) {
 // За допомогою циклу for додайте до sum усі числа від 1 до 100.
 // Виведіть результат у консоль.
 
+let sum = 0;
+for (let j = 0; j < 100; j++) {
+    sum = [j] + 1;
+    console.log(sum);
+}
 
 // 7. Комбіноване завдання: Цикл for of і масив
 // Створіть масив із 5 рядків (наприклад, імена людей).
