@@ -48,14 +48,12 @@ display(products);
 // JS preview | Базова інформація про функції 2
 
 function userFactory(id, name, age, status) {
-    let user = {
+    return {
         id: id,
         name: name,
         age: age,
         status: status
-    }
-
-    return user;
+    };
 }
 
 let user1 = userFactory(1, 'John', 20, true);
@@ -72,7 +70,7 @@ function calc(a, b) {
 console.log(calc(2, 3))
 
 function percent(sum, perc) {
-    return sum/ 100 * perc;
+    return sum / 100 * perc;
 }
 
 function tax(sum) {
@@ -99,7 +97,7 @@ let users = [
 function filter(array) {
     let filtredUsers = [];
     for (let arrayElement of array) {
-        if (arrayElement.status === true){
+        if (arrayElement.status === true) {
             filtredUsers.push(arrayElement)
         }
     }
@@ -122,3 +120,12 @@ function func() {
 
 let funcResult = func(12, 22, 34);
 console.log(funcResult);
+
+// JS preview | rest argument
+
+function f(y, z, ...x) {
+    console.log(x)
+    console.log(Array.isArray(x));
+}
+
+f(1, 2, 3, 4, 5)
