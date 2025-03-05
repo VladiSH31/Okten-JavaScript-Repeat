@@ -35,7 +35,7 @@ let products = [
 
 function display(array) {
     for (let arrayElement of array) {
-        console.log(arrayElement)
+        console.log(arrayElement);
     }
 }
 
