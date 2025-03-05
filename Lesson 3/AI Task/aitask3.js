@@ -78,14 +78,15 @@ while (i < numsArray.length) {
     i++;
 }
 
-let numsArray3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-let ii = 0;
-while (i < numsArray3.length) {
-    let nums3 = numsArray3[i];
-    if (nums3 % 2 === 0) {
-        console.log(nums3);
+let numsArray5 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+let q = 0;
+while (q < numsArray5.length) {
+    let number1 = numsArray5[q];
+    if (number1 % 2 === 0) {
+        console.log(number1)
     }
+        q++;
 }
 
 
@@ -94,16 +95,23 @@ while (i < numsArray3.length) {
 // За допомогою циклу for додайте до sum усі числа від 1 до 100.
 // Виведіть результат у консоль.
 
+
 let sum = 0;
-for (let j = 0; j < 100; j++) {
-    sum = [j] + 1;
-    console.log(sum);
+for (let j = 0; j < 101; j++) {
+    let numbers1 = +[j];
+    sum = sum + numbers1;
 }
+console.log(sum)
 
 // 7. Комбіноване завдання: Цикл for of і масив
 // Створіть масив із 5 рядків (наприклад, імена людей).
 // За допомогою циклу for of виведіть кожен елемент масиву у верхньому регістрі (використайте метод .toUpperCase()).
 
+let names = ['Vika', 'Mark', 'Nika', 'Vlad', 'Kira'];
+
+for (let name of names) {
+    console.log(name.toUpperCase())
+}
 
 // 8. Комбіноване завдання: Цикл for in і вкладені об'єкти
 // Створіть об'єкт, який описує студента:
@@ -111,13 +119,51 @@ for (let j = 0; j < 100; j++) {
 // За допомогою циклу for in виведіть усі ключі та значення об'єкта.
 // Виведіть середню оцінку студента (обчисліть середнє значення масиву grades).
 
+let student = {
+    name: 'Vasya',
+    age: 18,
+    grades: [5, 5, 4, 3, 3]
+}
+
+for (let Keys in student) {
+    console.log(Keys, student[Keys]);
+}
+let sumGrades = 0;
+for (const gradesElement of student.grades) {
+    sumGrades = sumGrades + gradesElement;
+}
+console.log(sumGrades / student.grades.length)
+
 
 // 9. Комбіноване завдання: Цикл while і масив
 // Створіть масив із 10 чисел.
 // За допомогою циклу while знайдіть найбільше число в масиві.
 // Виведіть результат у консоль.
 
+let numArr = [1, 22, 33, 14, 85, 65, 79, 18, 29, 10];
+
+let n = 0;
+let maxNum = 0;
+while (n < numArr.length) {
+    if (numArr[n] > maxNum) {
+        maxNum = numArr[n];
+    }
+    n++;
+}
+console.log(maxNum);
 
 // 10. Комбіноване завдання: Вкладені цикли
 // Створіть двовимірний масив (матрицю) 3x3, заповнений числами від 1 до 9.
 // За допомогою вкладеного циклу for виведіть усі елементи матриці у консоль.
+
+let arrayNums = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+for (const Element of arrayNums) {
+    for (const elementKey in Element) {
+        console.log(Element[elementKey])
+    }
+}
