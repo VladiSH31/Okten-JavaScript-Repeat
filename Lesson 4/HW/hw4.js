@@ -82,7 +82,7 @@ liWriterFactory('repeat', 4)
 
 let arr = [1, 2, 0, 'Hello', false];
 
-function arrayDisplay(array) {
+function arrayDisplay1(array) {
     document.write(`<ul>`)
 
     for (let i = 0; i < array.length; i++) {
@@ -93,7 +93,7 @@ function arrayDisplay(array) {
     document.write(`</ul>`)
 }
 
-arrayDisplay(arr);
+arrayDisplay1(arr);
 
 // #bovDJDTIjt
 // - створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в документ.
