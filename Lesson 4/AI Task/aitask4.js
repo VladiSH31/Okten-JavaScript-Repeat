@@ -34,16 +34,29 @@ console.log(sum);
 // Створіть функцію factorial, яка приймає число n і повертає його факторіал (n!).
 // Використайте цикл for для обчислення факторіалу.
 
+// function factorial(n) {
+//     let factorial = 0;
+//     for (let i = n; i >= 0; i--) {
+//         factorial = factorial + (n * (n - 1));
+//     }
+//     return factorial;
+// }
+//
+// let factorN = factorial(5);
+// console.log(factorN);
+
+
 function factorial(n) {
-    let factorial = 0;
-    for (let i = n; i >= 0; i--) {
-        factorial = factorial + (n * (n - 1));
+    let factorial = 1;
+    for (let i = n; i > 0; i--) {
+        factorial *= i;
     }
     return factorial;
 }
 
-let factorN = factorial(5);
-console.log(factorN);
+let factorN = factorial(10);
+console.log(factorN); // 120
+
 
 // 5. Змінна arguments
 // Створіть функцію multiply, яка приймає довільну кількість чисел (використайте arguments) і повертає їх добуток.
@@ -116,6 +129,7 @@ countWords('words Hello world Goodbay like');
 // Створіть функцію isPalindrome, яка приймає рядок і повертає true, якщо рядок є паліндромом, і false в іншому випадку.
 // Використайте методи .split(''), .reverse() і .join('') для перевірки.
 
+// Я ще не вивчав методи, але спробую
 function isPallindrome(word) {
     let editWord = word.split('');
     editWord.reverse();
@@ -126,4 +140,3 @@ function isPallindrome(word) {
 console.log(isPallindrome('tenet'));
 
 
-// Я ще не вивчав методи
