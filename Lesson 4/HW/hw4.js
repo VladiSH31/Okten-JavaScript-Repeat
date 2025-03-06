@@ -174,14 +174,12 @@ console.log(swap([11, 22, 33, 44], 0, 1));
 
 function exchange(sumUAH, currencyValues, exchangeCurrency) {
 
-    let result = 0;
-    if (exchangeCurrency === 'USD') {
-        result = sumUAH / currencyValues[0].value;
-    } else if (exchangeCurrency === 'EUR') {
-        result = sumUAH / currencyValues[1].value;
+    for (const currencyValue of currencyValues) {
+        if (currencyValue.currency === exchangeCurrency) {
+            return sumUAH / currencyValue.value;
+        }
     }
-    return result
 
 }
 
-console.log(exchange(10000, [{currency: 'USD', value: 25}, {currency: 'EUR', value: 42}], 'ESD'));
+console.log(exchange(10000, [{currency: 'USD', value: 25}, {currency: 'EUR', value: 42}], 'USD'));
