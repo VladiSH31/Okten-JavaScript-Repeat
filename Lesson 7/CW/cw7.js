@@ -90,3 +90,14 @@ console.log(arrayFromSet === set);
 
 
 // JS preview | Map
+
+let map = new Map();
+map.set(1, 'one')
+map.set(2, 'two')
+map.set(3, 'Three')
+console.log(map);
+console.log(map.get(2));
+
+let likar = {id:'Gor'}
+map.set(likar, {name: 'Roman', age: 22})
+console.log(map.get(likar));
