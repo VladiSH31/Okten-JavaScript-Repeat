@@ -69,3 +69,6 @@ let clients = [
     new Client(99, 'Nadezhda', 'Bilos', 'mail99@gmail.com', '380112223399', ['bread', 'beer', 'meat']),
     new Client(111, 'Anna', 'Pedrenko', 'mail110@gmail.com', '380112223300', ['bread', 'milk', 'eggs']),
 ]
+
+//#8abtVjRv
+// – Взяти масив (Client [] з попереднього завдання).Відсортувати його по кількості товарів в полі order по зростанню. (sort)
