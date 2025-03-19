@@ -174,11 +174,19 @@ class Cinderella {
         this.footSize = footSize;
     }
 }
-let prince = {
-    name: 'John',
-    age: 30,
-    shoeSize: 36
+
+class Prince {
+    constructor(name, age, shoeSize) {
+        this.name = name;
+        this.age = age;
+        this.shoeSize = shoeSize;
+    }
 }
+
+
+
+
+let prince = new Prince('John', 35,36)
 
 let cinderellas = [
     new Cinderella('Olga', 25, 39),
