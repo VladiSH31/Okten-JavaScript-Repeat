@@ -72,5 +72,27 @@ let coursesArray = [
         modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
     }
 ];
+for (const coursesArrayElement of coursesArray) {
+    let courseDiv = document.createElement('div');
+    courseDiv.classList.add('course-div');
 
-let course = document.createElement('div');
+    let title = document.createElement('h2');
+    title.innerText = coursesArrayElement.title;
+    courseDiv.appendChild(title);
+
+    let duration = document.createElement('div');
+    duration.innerText = `Month Duration: ${coursesArrayElement.monthDuration} Hour Duration: ${coursesArrayElement.hourDuration}`
+    courseDiv.appendChild(duration)
+
+    let ulModules = document.createElement('ul');
+    for (const module of coursesArrayElement.modules) {
+        let li = document.createElement('li')
+        li.innerText = module;
+        ulModules.appendChild(li)
+    }
+    courseDiv.appendChild(ulModules)
+
+    document.body.appendChild(courseDiv);
+}
+
+
