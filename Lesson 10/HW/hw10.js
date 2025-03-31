@@ -43,14 +43,12 @@
 
 let f1 = document.forms.f1;
 
-let userDiv = document.createElement('div');
-document.body.append(userDiv)
+let userDiv = document.getElementById('target')
 
-f1.onsubmit = function () {
+f1.onsubmit = function (e) {
+    e.preventDefault()
     let name = f1.username.value;
     let age = f1.userage.value;
     let surname = f1.usersurname.value;
-    let obj = {name, age, surname}
-    console.log(obj);
     userDiv.innerText = name + ' ' + age + ' ' + surname;
 }
