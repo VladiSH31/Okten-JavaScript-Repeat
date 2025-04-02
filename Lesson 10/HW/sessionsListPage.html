@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    let pageSession = JSON.parse(localStorage.getItem('sessionList'));
+    let divSessions = document.createElement('div');
+    document.body.append(divSessions)
+    for (let pageSessionElement of pageSession) {
+        let divSession = document.createElement('div');
+        divSession.innerText = pageSessionElement.toString();
+        divSessions.appendChild(divSession)
+    }
+
+</script>
+</body>
+</html>
