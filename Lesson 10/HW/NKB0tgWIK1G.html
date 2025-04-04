@@ -3,21 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+
+        body{
+            background-color:rgb(0,0,0,0.9);
+        }
+
+        .buttons{
+            margin-top: 100px;
+            display:flex;
+            justify-content:center;
+            gap:2rem;
+        }
+        .buttons button{
+            border:none;
+            padding:0.4rem 1.2rem;
+            background-color:purple;
+            color:white;
+            border-radius:5px;
+            cursor:pointer
+        }
+
+        #page-number{
+            border:none;
+            text-align:center;
+            width:3rem;
+            border-radius:5px;
+        }
+        #page-number:focus{
+            outline:none;
+        }
+
+        .list-container{
+            display:flex;
+            justify-content:center;
+        }
+        .list-container{
+            height:700px;
+        }
+        .list-container ul {
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            grid-template-rows:repeat(5,1fr);
+            gap:1rem;
+        }
+        .list-container ul li {
+            width:100px;
+            height:60px;
+            margin:20px 0;
+            list-style:none;
+            padding:0.5rem 1rem;
+            background-color:slateblue;
+            color:white;
+            border-radius:5px;
+        }
+
+    </style>
 </head>
 <body>
+<!--HTML-->
+<div class="list-container">
+    <ul id="data-list"></ul>
+</div>
+
+<div class="buttons">
+    <button id="prev">Prev</button>
+    <input type="number" id="page-number" />
+    <button id="next">Next</button>
+</div>
+<!--HTML-->
 <script>
 
-<!--    #NKB0tgWIK1G
 
-***PAGINATION
 
-зробити масив на 100 об’єктів та дві кнопки prev next
+const dataSet = [
+    {id: 7703354, name: "Alison Joseph"},
+    {id: 5072488, name: "Chaney Mccall"},
+    {id: 2588577, name: "Mason Spencer"},
+    {id: 2180840, name: "Mary Orr"},
+    {id: 3396494, name: "Mercer Brooks"},
+    {id: 9759634, name: "Houston James"},
+    {id: 1789304, name: "Naomi Atkinson"},
+    {id: 3384914, name: "Kristy Nieves"},
+    {id: 6821119, name: "Holden Morton"},
+    {id: 567606, name: "Mae Ware"},
+    {id: 3659135, name: "Milagros Fleming"},
+    {id: 7208150, name: "Beard Nicholson"},
+    {id: 2371035, name: "Clara Vargas"},
+    {id: 1024397, name: "Garrison Wise"},
+    {id: 9449750, name: "Debra Owens"},
+    {id: 6176153, name: "Manning Mcgee"},
+    {id: 9295654, name: "Osborne Foley"},
+    {id: 4150571, name: "Clarice Watts"},
+    {id: 2350520, name: "Hurley Francis"},
+    {id: 2382635, name: "Tyler Rich"},
+    {id: 9884559, name: "Lawrence Raymond"},
+    {id: 5697484, name: "Thomas Rios"},
+    {id: 6879423, name: "Rivers Richards"},
+    {id: 2421764, name: "Gray Boyle"},
+    {id: 7507181, name: "Kristine Ray"},
+    {id: 3097583, name: "Abby Sears"},
+    {id: 8856109, name: "Brittney Hoffman"},
+    {id: 6838244, name: "Williamson Anderson"},
+    {id: 7139227, name: "Mclean Frederick"},
+    {id: 918371, name: "Davis Rollins"},
+    {id: 8839168, name: "Diann Carlson"},
+    {id: 7640801, name: "Ava Ramos"},
+    {id: 3777045, name: "Butler Simmons"},
+    {id: 1455581, name: "Moreno Parks"},
+    {id: 7245665, name: "Cash Klein"},
+    {id: 7658070, name: "Greta Franklin"},
+    {id: 468854, name: "Christina Reeves"},
+    {id: 7014648, name: "Socorro Lawrence"},
+    {id: 5548463, name: "Alexander Pratt"},
+    {id: 9361464, name: "Michael Browning"},
+    {id: 2565703, name: "Parrish Lindsay"},
+    {id: 4752132, name: "Bryant Mcdonald"},
+    {id: 8839902, name: "Deidre Noel"},
+    {id: 8945959, name: "Imelda Moran"},
+    {id: 2391511, name: "Jaclyn Riddle"},
+    {id: 3301944, name: "Tanya Harrell"},
+    {id: 5768451, name: "Gonzales Woodward"},
+    {id: 8595547, name: "Tyson Dawson"},
+    {id: 6887064, name: "Randolph Walton"},
+    {id: 2775625, name: "Lilly Bowen"},
+    {id: 4518220, name: "Brock Baldwin"},
+    {id: 4725416, name: "Autumn Austin"},
+    {id: 5724924, name: "Nelson Farrell"},
+    {id: 8570072, name: "Samantha Walter"},
+    {id: 573701, name: "Roslyn Moon"},
+    {id: 4103341, name: "Bean Webb"},
+    {id: 5031376, name: "English Jennings"},
+    {id: 7948474, name: "Kris Guzman"},
+    {id: 1068677, name: "Mariana French"},
+    {id: 7045507, name: "Muriel Emerson"},
+    {id: 1913840, name: "Clements Freeman"},
+    {id: 7590311, name: "Murphy Mayo"},
+    {id: 2071861, name: "Erickson Coleman"},
+    {id: 7772397, name: "Nixon Everett"},
+    {id: 5015791, name: "Sheila Bartlett"},
+    {id: 633904, name: "Oconnor Craig"},
+    {id: 8725400, name: "Melba Carter"},
+    {id: 4627541, name: "Roberts Fitzpatrick"},
+    {id: 8595629, name: "Herman Bowman"},
+    {id: 7449488, name: "Holcomb Mclean"},
+    {id: 6760512, name: "Barlow Simon"},
+    {id: 5803601, name: "Rosalind Wilkinson"},
+    {id: 7906613, name: "Louisa Rosa"},
+    {id: 9688666, name: "Katrina Oconnor"},
+    {id: 1332765, name: "Mcmillan Santana"},
+    {id: 3188681, name: "Gloria Holmes"},
+    {id: 6819871, name: "Pennington Roach"},
+    {id: 7652241, name: "Lara Carroll"},
+    {id: 5804374, name: "Leah Woods"},
+    {id: 9746845, name: "Fuentes Stanley"},
+    {id: 233385, name: "Kelsey Sweeney"},
+    {id: 8645326, name: "Morrow Bond"},
+    {id: 1125493, name: "Mccullough Hyde"},
+    {id: 6438416, name: "Short Acevedo"},
+    {id: 7869460, name: "Campos Rodriguez"},
+    {id: 7007288, name: "Mayer Sampson"},
+    {id: 964701, name: "Wynn Lott"},
+    {id: 2053442, name: "Colette Garrison"},
+    {id: 94649, name: "Denise Hogan"},
+    {id: 8665584, name: "Freida Kelley"},
+    {id: 8385024, name: "Owens Keller"},
+    {id: 5516670, name: "Sylvia Mckee"},
+    {id: 1149211, name: "Travis Adkins"},
+    {id: 5658839, name: "Anthony Joyner"},
+    {id: 7275411, name: "Audrey Flores"},
+    {id: 4222175, name: "Lorie Heath"},
+    {id: 2443939, name: "Goodwin Washington"},
+    {id: 1105469, name: "Genevieve Pope"},
+    {id: 5534944, name: "Valdez Arnold"},
+    {id: 883632, name: "Nora Turner"},
+    {id: 9540968, name: "Burch Atkins"},
+    {id: 7193124, name: "Morse Cleveland"},
+    {id: 9503559, name: "Collier Carey"},
+    {id: 1499631, name: "Douglas Jenkins"},
+    {id: 2454693, name: "Candace Hall"},
+    {id: 7635269, name: "Sharron Little"},
+    {id: 1012358, name: "Dixon Oneal"},
+    {id: 417728, name: "Minnie Ayers"},
+    {id: 5697271, name: "Ball Bender"},
+    {id: 4870002, name: "Lynette Fields"},
+    {id: 7443223, name: "Alyson Hawkins"},
+    {id: 9976836, name: "Vargas Coffey"},
+    {id: 7198267, name: "Arline Crawford"},
+    {id: 2568534, name: "Lydia Hopper"},
+    {id: 9029706, name: "Blair Cooper"},
+    {id: 1661416, name: "Geraldine Conner"},
+    {id: 3139439, name: "Daniel Short"},
+    {id: 892777, name: "Palmer Hensley"},
+    {id: 3005927, name: "Collins Copeland"},
+    {id: 7782702, name: "Caitlin Walsh"},
+    {id: 9930562, name: "Mcguire Christensen"},
+    {id: 9293307, name: "Irwin Bryan"},
+    {id: 9015020, name: "Marietta Pace"},
+    {id: 6076667, name: "Celia Reynolds"},
+    {id: 8015623, name: "Middleton Franco"},
+    {id: 2028985, name: "Patrica Hansen"},
+    {id: 9160493, name: "Juanita Mathis"},
+    {id: 7888330, name: "Elinor Hampton"},
+    {id: 4444537, name: "Velma Barry"},
+    {id: 8479477, name: "Liz Walls"},
+    {id: 8108062, name: "Meghan Cooke"},
+    {id: 9635373, name: "Dawson Dickson"},
+    {id: 251990, name: "Sharp Farmer"},
+    {id: 3260028, name: "Trujillo Gentry"},
+    {id: 564810, name: "Jaime Huber"},
+    {id: 8706649, name: "Evelyn Guerrero"},
+    {id: 9184730, name: "Stanley Roth"},
+    {id: 8297160, name: "Kirby Barber"},
+    {id: 5557701, name: "Gayle Preston"},
+    {id: 4818736, name: "Catherine Dunn"},
+    {id: 9565287, name: "Brooks Banks"},
+    {id: 5520023, name: "Tania Curry"},
+    {id: 8912517, name: "Isabelle Mann"},
+    {id: 2276414, name: "Joy Mcclain"},
+    {id: 6282102, name: "Susana Cunningham"},
+    {id: 5605931, name: "Pitts Valenzuela"},
+    {id: 833868, name: "Ayala Galloway"},
+    {id: 2336748, name: "Walter Harrington"},
+    {id: 8124404, name: "Mejia Lane"},
+    {id: 9927069, name: "Whitfield Mcgowan"},
+    {id: 4235865, name: "Mccarty Booker"},
+    {id: 6543471, name: "Rachael Kramer"},
+    {id: 6391032, name: "Maryann Peck"},
+    {id: 7023553, name: "Charity Sanders"},
+    {id: 9228688, name: "Ferguson Hooper"},
+    {id: 6504929, name: "Cindy Warner"},
+    {id: 9084091, name: "Mercedes Mcfadden"},
+    {id: 125829, name: "Sanford Goff"},
+    {id: 5417978, name: "Rush Stephenson"},
+    {id: 8311091, name: "Jody Silva"},
+    {id: 4437844, name: "Ashlee Sparks"},
+    {id: 868861, name: "Angelina Carrillo"},
+    {id: 4617790, name: "Janis Thomas"},
+    {id: 4382461, name: "Nancy Britt"},
+    {id: 9733801, name: "Lenora Stone"},
+    {id: 3859425, name: "Sophia Walters"},
+    {id: 7914898, name: "Jennie Shepherd"},
+    {id: 9591285, name: "Tucker Terry"},
+    {id: 6630891, name: "Burks Mayer"},
+    {id: 5858244, name: "Watkins Knapp"},
+    {id: 1041862, name: "Lucy King"},
+    {id: 5899444, name: "Janelle Jarvis"},
+    {id: 9977022, name: "Peters Torres"},
+    {id: 5420626, name: "Deana Chambers"},
+    {id: 2794223, name: "Kendra Alston"},
+    {id: 5552097, name: "Huber Moore"},
+    {id: 764436, name: "Zelma Bridges"},
+    {id: 6616252, name: "Tracy Mccarty"},
+    {id: 9411340, name: "Evangelina Clay"},
+    {id: 6818292, name: "Barry Hartman"},
+    {id: 5701580, name: "Melinda Cardenas"},
+    {id: 6975548, name: "Johnson Rodriquez"},
+    {id: 9169879, name: "Beatrice Petersen"},
+    {id: 3158480, name: "Marcy Guy"},
+    {id: 1033846, name: "Weiss Osborne"},
+    {id: 4776250, name: "Mcfadden Graves"},
+    {id: 5346822, name: "Vicky Matthews"},
+    {id: 6435674, name: "Fern Chase"},
+    {id: 4100414, name: "Dunlap Cohen"},
+    {id: 6912428, name: "Bessie Quinn"},
+    {id: 161150, name: "Malone Ingram"},
+    {id: 8926624, name: "Mari Welch"},
+    {id: 6689983, name: "Ruth Zamora"},
+    {id: 9505989, name: "Compton Day"},
+    {id: 6610735, name: "Amanda Martin"},
+    {id: 6994423, name: "Angela Maddox"},
+    {id: 6104440, name: "Santos Norris"},
+    {id: 935341, name: "Cannon Crosby"},
+    {id: 664216, name: "Briggs Mason"},
+    {id: 1065037, name: "Battle Doyle"},
+    {id: 7680973, name: "Joanna Butler"},
+    {id: 6526304, name: "Navarro Blankenship"},
+    {id: 5883202, name: "Mcdaniel Smith"},
+    {id: 1652033, name: "Aida Jacobs"},
+    {id: 4429351, name: "Blackwell Le"},
+    {id: 7979539, name: "Grant Lester"},
+    {id: 8467960, name: "Reed Gardner"},
+    {id: 8340769, name: "Wilda Whitaker"},
+    {id: 770916, name: "Stacie Mckinney"},
+    {id: 9518666, name: "Paige Mcmillan"},
+    {id: 7135115, name: "Gonzalez Davidson"},
+    {id: 3563712, name: "Letha Buck"},
+    {id: 3623173, name: "Jenny Vazquez"},
+    {id: 9048035, name: "Alba Acosta"},
+    {id: 2175351, name: "Sloan Macdonald"},
+    {id: 1946138, name: "Byrd Schwartz"},
+    {id: 7737669, name: "Berta Mendez"},
+    {id: 5247707, name: "Latoya Long"},
+    {id: 8983489, name: "Krystal Maynard"},
+    {id: 2421428, name: "Sherrie Hebert"},
+    {id: 1354424, name: "Chang Hendricks"},
+    {id: 130275, name: "Benita Sharp"},
+    {id: 7918949, name: "Blankenship Shelton"},
+    {id: 7844428, name: "Lakeisha Robertson"},
+    {id: 9136760, name: "Nettie Cantrell"},
+    {id: 8212324, name: "Swanson Barnett"},
+    {id: 4113537, name: "Ramona Rivers"},
+    {id: 3588600, name: "Jimmie Rivas"},
+    {id: 3804370, name: "Susie Dudley"},
+    {id: 3353975, name: "Bobbi Hester"},
+    {id: 1174315, name: "Ada Mitchell"},
+    {id: 8578222, name: "Kidd Murphy"},
+    {id: 6445027, name: "Staci Roy"},
+    {id: 1184030, name: "Gwendolyn Gutierrez"},
+    {id: 5098941, name: "Robbins Aguilar"}
+];
 
-при завантажені сторінки з’являються перші 10 об’єктів.
+const list = document.getElementById('data-list');
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+const pageNumberValue = document.getElementById('page-number')
 
-При натисканні next виводяться наступні 10 об’єктів
+let startIndex = 0;
+let endIndex = 10;
+let pageNumber = 1;
 
-При натисканні prev виводяться попередні 10 об’єктів -->
+pageNumberValue.value = pageNumber
+
+const mapData = () => {
+    list.innerHTML = dataSet
+        .slice(startIndex, endIndex)
+        .map((row) => {
+            return `<li>${row.name}</li>`;
+        })
+        .join('');
+}
+
+mapData();
+
+prevButton.addEventListener("click", () => {
+    if (endIndex < 20) {
+        startIndex = 0;
+        endIndex = 10;
+    } else {
+        startIndex -= 10;
+        endIndex -= 10;
+        pageNumber -= 1;
+    }
+    pageNumberValue.value = pageNumber;
+    mapData();
+});
+
+nextButton.addEventListener("click", () => {
+    if (endIndex < dataSet.length) {
+        startIndex += 10;
+        endIndex += 10;
+        pageNumber += 1;
+    }
+    pageNumberValue.value = pageNumber;
+    mapData();
+});
+
+
+pageNumberValue.addEventListener("change",(e) => {
+    let currentPageNumber = Number.parseInt(e.target.value)
+    let maxPageNumber = Math.floor(dataSet.length/10)
+    if(currentPageNumber > maxPageNumber){
+        currentPageNumber = maxPageNumber;
+        e.target.value = value;
+    }
+    else if(currentPageNumber < 0){
+        currentPageNumber = 0;
+        e.target.value = value
+    }
+    startIndex = currentPageNumber * 10;
+    endIndex = startIndex + 10
+    pageNumber = currentPageNumber
+    mapData();
+})
 
 </script>
 </body>
