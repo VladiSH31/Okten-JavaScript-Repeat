@@ -6,6 +6,24 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+
+        .recipe {
+            width: 700px;
+            border: 1px solid black;
+            border-radius: 15px;
+            margin-top: 20px;
+            background-color: pink;
+            padding: 10px;
+        }
+
+        img {
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -24,33 +42,51 @@
                 let recipeInfo = document.createElement('div');
                 recipeInfo.classList.add('recipe-info');
                 recipeInfo.innerText = `
-                    "name": ${recipe.name},
-                    "prepTimeMinutes": ${recipe.prepTimeMinutes},
-                    "cookTimeMinutes": ${recipe.cookTimeMinutes},
-                    "servings": ${recipe.servings},
-                    "difficulty": ${recipe.difficulty},
-                    "cuisine": ${recipe.cuisine},
-                    "caloriesPerServing": ${recipe.caloriesPerServing},
-                    "tags": ${recipe.tags},
-                    "userId": ${recipe.userId},
-                    "rating": ${recipe.rating},
-                    "reviewCount": ${recipe.reviewCount},
-                    "mealType": ${recipe.mealType}
+                    Name: ${recipe.name},
+                    Prep Time (Minutes): ${recipe.prepTimeMinutes},
+                    Cook Time (Minutes): ${recipe.cookTimeMinutes},
+                    Servings : ${recipe.servings},
+                    Difficulty : ${recipe.difficulty},
+                    Cuisine: ${recipe.cuisine},
+                    Calories Per Serving: ${recipe.caloriesPerServing},
+                    Tags: ${recipe.tags},
+                    UserId: ${recipe.userId},
+                    Rating: ${recipe.rating},
+                    ReviewCount: ${recipe.reviewCount},
+                    Meal Type: ${recipe.mealType},
                 `
-                let ul = document.createElement('ul')
-                ul.classList.add('ingredients');
+                let ingredientsDiv = document.createElement('div');
+                ingredientsDiv.classList.add('ingredients')
+                let h3Ingredients = document.createElement('h3');
+                h3Ingredients.innerText = 'Ingredients'
+                let ulIngredients = document.createElement('ul')
+                ulIngredients.classList.add('ingredients');
                 for (const ingredient of recipe.ingredients) {
                     let li = document.createElement('li');
                     li.innerText = ingredient;
-                    
-                    ul.appendChild(li);
+
+                    ulIngredients.appendChild(li);
+                }
+
+                let instructionsDiv = document.createElement('div');
+                instructionsDiv.classList.add('instructions');
+                let h3Instructions = document.createElement('h3');
+                h3Instructions.innerText = 'Instructions';
+                let ulInstructions = document.createElement('ul')
+                ulInstructions.classList.add('instructions');
+                for (const instruction of recipe.instructions) {
+                    let li = document.createElement('li')
+                    li.innerText = instruction;
+
+                    ulInstructions.appendChild(li);
                 }
 
                 let img = document.createElement('img')
                 img.src = recipe.image;
 
-
-                recipeConteiner.append(img, recipeInfo, ul);
+                instructionsDiv.append(h3Instructions, ulInstructions)
+                ingredientsDiv.append(h3Ingredients, ulIngredients);
+                recipeConteiner.append(img, recipeInfo, ingredientsDiv, instructionsDiv);
                 recipesDiv.appendChild(recipeConteiner);
             }
 
