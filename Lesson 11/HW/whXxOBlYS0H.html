@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="recipes-conteiner"></div>
+
+<script>
+    let recipesDiv = document.getElementById('recipes-conteiner');
+    fetch('https://dummyjson.com/recipes')
+        .then(res => res.json())
+        .then(recipesObj => {
+            let {recipes} = recipesObj;
+
+            for (const recipe of recipes) {
+                let recipeConteiner = document.createElement('div');
+                recipeConteiner.classList.add('recipe');
+                let recipeInfo = document.createElement('div');
+                recipeInfo.classList.add('recipe-info');
+                recipeInfo.innerText = `
+                    "name": ${recipe.name},
+                    "prepTimeMinutes": ${recipe.prepTimeMinutes},
+                    "cookTimeMinutes": ${recipe.cookTimeMinutes},
+                    "servings": ${recipe.servings},
+                    "difficulty": ${recipe.difficulty},
+                    "cuisine": ${recipe.cuisine},
+                    "caloriesPerServing": ${recipe.caloriesPerServing},
+                    "tags": ${recipe.tags},
+                    "userId": ${recipe.userId},
+                    "rating": ${recipe.rating},
+                    "reviewCount": ${recipe.reviewCount},
+                    "mealType": ${recipe.mealType}
+                `
+                let ul = document.createElement('ul')
+                ul.classList.add('ingredients');
+                for (const ingredient of recipe.ingredients) {
+                    let li = document.createElement('li');
+                    li.innerText = ingredient;
+                    
+                    ul.appendChild(li);
+                }
+
+                let img = document.createElement('img')
+                img.src = recipe.image;
+
+
+                recipeConteiner.append(img, recipeInfo, ul);
+                recipesDiv.appendChild(recipeConteiner);
+            }
+
+        });
+
+</script>
+
+</body>
+</html>
